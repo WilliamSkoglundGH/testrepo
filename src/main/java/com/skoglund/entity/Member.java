@@ -14,6 +14,31 @@ public class Member {
     public Member(){
 
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAgeGroup() {
+        return ageGroup;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAgeGroup(String ageGroup) {
+        this.ageGroup = ageGroup;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public Member(String name, String ageGroup){
         this.name = name;
         this.ageGroup = ageGroup;
