@@ -76,6 +76,7 @@ public class ChoseNewItemWindow {
                     addNewLureSetWindow.showAddNewLureSetWindow();
                 }
             }
+            addNewItemStage.close();
         });
         Button closeWindowButton = new Button("Stäng fönster");
         closeWindowButton.setStyle("-fx-background-color: red;" +

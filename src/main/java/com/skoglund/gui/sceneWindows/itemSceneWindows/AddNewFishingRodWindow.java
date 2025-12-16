@@ -83,6 +83,7 @@ public class AddNewFishingRodWindow {
                 confirmationWindow.showConfirmationWindow("Nytt fiskespö adderat",
                         "Fiskespöt har lagts till i klubben!",
                         "Det nya fiskespöt är nu adderat till klubbens lager");
+                addNewFishingPoleStage.close();
 
 
             }catch(InvalidInputException exception){

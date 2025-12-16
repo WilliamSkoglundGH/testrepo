@@ -6,6 +6,18 @@ import com.skoglund.util.exceptions.NegativeInputValueException;
 
 public class ValidationMethods {
 
+    public static void validateItemBaseInfo(String brand, String color){
+        if(brand.isEmpty() || color.isEmpty()){
+            throw new EmptyFieldException("Inget textfält får lämnas tomt!");
+        }
+        String regex = "^[A-Za-zÅÄÖåäö]*$";
+        if(!color.matches(regex)){
+            throw new InvalidInputFormatException("Textfältet: färg får endast " +
+                    "innehålla bokstäver");
+        }
+
+    }
+
     public static void validateMemberName(String nameInput){
         if(nameInput.isEmpty()){
             throw new EmptyFieldException("Namn textfältet får ej vara tomt");

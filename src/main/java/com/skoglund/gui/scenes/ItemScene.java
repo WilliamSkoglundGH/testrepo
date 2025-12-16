@@ -3,28 +3,27 @@ package com.skoglund.gui.scenes;
 import com.skoglund.entity.item.Item;
 import com.skoglund.gui.SceneHandler;
 import com.skoglund.gui.sceneWindows.itemSceneWindows.ChoseNewItemWindow;
+import com.skoglund.gui.sceneWindows.itemSceneWindows.EditItemWindow;
 import com.skoglund.gui.sceneWindows.sharedWindows.ConfirmationWindow;
 import com.skoglund.repository.Inventory;
 import com.skoglund.service.InventoryService;
+import javafx.collections.FXCollections;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ItemScene {
     private Inventory inventory;
     private InventoryService inventoryService;
     private ConfirmationWindow confirmationWindow;
-
-    //GUI fönster specifika för denna scen
-    private ChoseNewItemWindow choseNewItemWindow;
 
     //Tabell specifik för denna scen
     private TableView<Item> itemTableView;
@@ -32,18 +31,25 @@ public class ItemScene {
     //Scen hanteraren som sköter scenbyten
     private SceneHandler sceneHandler;
 
-    public ItemScene(){
+    private ChoiceBox<String> itemFilterChoiceBox;
+
+    public ItemScene() {
 
     }
+
     public ItemScene(Inventory inventory, InventoryService inventoryService,
-                     ConfirmationWindow confirmationWindow, SceneHandler sceneHandler){
+                     ConfirmationWindow confirmationWindow, SceneHandler sceneHandler) {
         this.inventory = inventory;
         this.inventoryService = inventoryService;
         this.confirmationWindow = confirmationWindow;
         this.sceneHandler = sceneHandler;
     }
 
-    public Scene showItemScene(){
+    public Scene showItemScene() {
+        ChoseNewItemWindow choseNewItemWindow = new ChoseNewItemWindow(inventoryService, confirmationWindow);
+        EditItemWindow editItemWindow = new EditItemWindow();
+
+
         Label titleLabel = new Label("Välkommen till sidan för att hantera klubbens utrustning");
         titleLabel.setStyle("-fx-font-size:25; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
 
@@ -69,24 +75,39 @@ public class ItemScene {
         itemTableView.setItems(inventory.getItemList());
 
         Button addNewItemButton = new Button("Lägg till ny utrustning");
-        addNewItemButton.setOnAction(e ->{
-            choseNewItemWindow = new ChoseNewItemWindow(inventoryService,confirmationWindow);
+        addNewItemButton.setOnAction(e -> {
             choseNewItemWindow.showAddNewItemWindow();
+            changeTableViewFilter();
         });
 
         Button removeItemButton = new Button("Ta bort utrustning");
         removeItemButton.setOnAction(e -> {
             Item chosenItem = itemTableView.getSelectionModel().getSelectedItem();
-            if(chosenItem == null){
+            if (chosenItem == null) {
                 confirmationWindow.showConfirmationWindow("Process misslyckad",
                         "Borttagning av utrustning misslyckades",
                         "Du måste först markera en utrustning i tabellen innan du klickar på knappen");
-            }
-            else{
+            } else {
                 inventoryService.removeItem(chosenItem);
                 confirmationWindow.showConfirmationWindow("Process lyckad",
                         "Utrustning borttagen!",
                         chosenItem.getItemType() + " är nu borttaget från klubbens lager");
+                changeTableViewFilter();
+            }
+
+        });
+
+        Button editItemButton = new Button("Redigera utrustning");
+        editItemButton.setOnAction(e -> {
+            Item hightlitedItem = itemTableView.getSelectionModel().getSelectedItem();
+            if (hightlitedItem == null) {
+                confirmationWindow.showConfirmationWindow("Vald utrustning saknas",
+                        "Ingen utrustning vald",
+                        "Du måste markera (klicka på) en utrustning i tabellen innan du klickar på knappen" +
+                                "(Redigera utrustning)");
+            } else {
+                editItemWindow.showEditItemWindow(hightlitedItem, itemTableView, inventoryService);
+                changeTableViewFilter();
             }
 
         });
@@ -94,6 +115,7 @@ public class ItemScene {
         Button updateTableViewButton = new Button("Uppdatera tabell");
         updateTableViewButton.setOnAction(e -> {
             inventory.loadItemListFromFile();
+            changeTableViewFilter();
         });
 
         Button saveChangesButton = new Button("Spara ändringar");
@@ -102,15 +124,20 @@ public class ItemScene {
         });
 
         Button returnToMainMenuButton = new Button("Återgå till huvudmeny");
-        returnToMainMenuButton.setOnAction(e ->{
+        returnToMainMenuButton.setOnAction(e -> {
             sceneHandler.switchToMainMenu();
         });
         HBox returnButton = new HBox(returnToMainMenuButton);
         returnButton.setAlignment(Pos.BOTTOM_RIGHT);
 
-        HBox buttonsHBox = new HBox(addNewItemButton, removeItemButton,
-                updateTableViewButton,saveChangesButton);
-         buttonsHBox.setSpacing(20);
+        itemFilterChoiceBox = new ChoiceBox<>();
+        itemFilterChoiceBox.getItems().addAll("Alla", "Tillgängliga", "Uthyrda");
+        itemFilterChoiceBox.setValue("Alla");
+        itemFilterChoiceBox.setOnAction(e -> changeTableViewFilter());
+
+        HBox buttonsHBox = new HBox(addNewItemButton, removeItemButton, editItemButton,
+                updateTableViewButton, saveChangesButton, itemFilterChoiceBox);
+        buttonsHBox.setSpacing(20);
 
         VBox buttonsAndTableViewVBox = new VBox(itemTableView, buttonsHBox);
 
@@ -123,5 +150,21 @@ public class ItemScene {
 
         Scene scene = new Scene(rootLayout);
         return scene;
+    }
+
+    private void changeTableViewFilter(){
+        List<Item> filteredList = new ArrayList<>();
+        for (Item item : inventory.getItemList()) {
+            if (itemFilterChoiceBox.getValue().equals("Alla")) {
+                filteredList.add(item);
+            }
+            if (itemFilterChoiceBox.getValue().equals("Tillgängliga") && item.isAvailable()) {
+                filteredList.add(item);
+            }
+            if (itemFilterChoiceBox.getValue().equals("Uthyrda") && !item.isAvailable()) {
+                filteredList.add(item);
+            }
+        }
+        itemTableView.setItems(FXCollections.observableArrayList(filteredList));
     }
 }

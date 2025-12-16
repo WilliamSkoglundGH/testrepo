@@ -39,6 +39,14 @@ public abstract class Item {
         return isAvailable;
     }
 
+    public void setBrand(String brand){
+        this.brand = brand;
+    }
+
+    public void setColor(String color){
+        this.color = color;
+    }
+
     public void setItemId(String itemId) {
         this.itemId = itemId;
     }

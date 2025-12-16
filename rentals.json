@@ -160,4 +160,16 @@
   "rentalTime" : 2,
   "price" : 1000.0,
   "activeRental" : true
+}, {
+  "memberId" : "0946194",
+  "itemId" : "8774981",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : true
+}, {
+  "memberId" : "8841451",
+  "itemId" : "0745661",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : true
 } ]
