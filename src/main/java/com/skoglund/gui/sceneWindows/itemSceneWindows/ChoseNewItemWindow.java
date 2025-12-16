@@ -32,25 +32,25 @@ public class ChoseNewItemWindow {
     }
 
     public void showAddNewItemWindow(){
-        Stage addNewItem = new Stage();
-        addNewItem.initModality(Modality.APPLICATION_MODAL);
-        addNewItem.setMinWidth(500);
-        addNewItem.setMinHeight(400);
-        addNewItem.setTitle("Välj utrustning");
+        Stage addNewItemStage = new Stage();
+        addNewItemStage.initModality(Modality.APPLICATION_MODAL);
+        addNewItemStage.setMinWidth(500);
+        addNewItemStage.setMinHeight(400);
+        addNewItemStage.setTitle("Välj utrustning");
 
-        Label titel = new Label("Välj utrustning att lägga till");
-        titel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
+        Label titleLabel = new Label("Välj utrustning att lägga till");
+        titleLabel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
                 "-fx-font-family:'Comic Sans MS'; -fx-font-weight: bold;");
-        HBox windowTitel = new HBox(titel);
-        windowTitel.setAlignment(Pos.CENTER);
+        HBox windowTitelHBox = new HBox(titleLabel);
+        windowTitelHBox.setAlignment(Pos.CENTER);
 
-        Label choseItem = new Label("Välj utrustningstyp:");
+        Label choseItemLabel = new Label("Välj utrustningstyp:");
         ChoiceBox<String> itemChoiceBox = new ChoiceBox<>();
         itemChoiceBox.getItems().addAll("Fiskespö", "Fiskerulle", "Betesset");
 
-        VBox choseItemm = new VBox(choseItem,itemChoiceBox);
-        choseItemm.setSpacing(7);
-        choseItemm.setAlignment(Pos.CENTER);
+        VBox choseItemVBox = new VBox(choseItemLabel,itemChoiceBox);
+        choseItemVBox.setSpacing(7);
+        choseItemVBox.setAlignment(Pos.CENTER);
 
         Button showNextWindowButton = new Button("Nästa");
         showNextWindowButton.setStyle("-fx-background-color: green;" +
@@ -77,21 +77,21 @@ public class ChoseNewItemWindow {
                 }
             }
         });
-        Button closeWindow = new Button("Stäng fönster");
-        closeWindow.setStyle("-fx-background-color: red;" +
+        Button closeWindowButton = new Button("Stäng fönster");
+        closeWindowButton.setStyle("-fx-background-color: red;" +
                 ";-fx-text-fill: white; -fx-font-weight: bold;");
-        closeWindow.setOnAction(e -> addNewItem.close());
-        HBox buttons = new HBox(closeWindow, showNextWindowButton);
-        buttons.setSpacing(100);
-        buttons.setAlignment(Pos.CENTER);
+        closeWindowButton.setOnAction(e -> addNewItemStage.close());
+        HBox buttonsHBox = new HBox(closeWindowButton, showNextWindowButton);
+        buttonsHBox.setSpacing(100);
+        buttonsHBox.setAlignment(Pos.CENTER);
 
         BorderPane rootLayout = new BorderPane();
         rootLayout.setPadding(new Insets(15));
-        rootLayout.setTop(windowTitel);
-        rootLayout.setCenter(choseItemm);
-        rootLayout.setBottom(buttons);
+        rootLayout.setTop(windowTitelHBox);
+        rootLayout.setCenter(choseItemVBox);
+        rootLayout.setBottom(buttonsHBox);
         Scene scene = new Scene(rootLayout);
-        addNewItem.setScene(scene);
-        addNewItem.showAndWait();
+        addNewItemStage.setScene(scene);
+        addNewItemStage.showAndWait();
     }
 }

@@ -44,15 +44,15 @@ public class ItemScene {
     }
 
     public Scene showItemScene(){
-        Label titel = new Label("Välkommen till sidan för att hantera klubbens utrustning");
-        titel.setStyle("-fx-font-size:25; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
+        Label titleLabel = new Label("Välkommen till sidan för att hantera klubbens utrustning");
+        titleLabel.setStyle("-fx-font-size:25; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
 
-        Label subTitel = new Label("Här under visas klubbens lager med utrustning");
-        subTitel.setStyle("-fx-font-size:21; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
+        Label subTitleLabel = new Label("Här under visas klubbens lager med utrustning");
+        subTitleLabel.setStyle("-fx-font-size:21; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
 
-        VBox windowTitels = new VBox(titel, subTitel);
-        windowTitels.setSpacing(7);
-        windowTitels.setAlignment(Pos.CENTER);
+        VBox windowTitelsVBox = new VBox(titleLabel, subTitleLabel);
+        windowTitelsVBox.setSpacing(7);
+        windowTitelsVBox.setAlignment(Pos.CENTER);
 
         TableColumn<Item, String> itemTypeColumn = new TableColumn<>("Utrustning:");
         itemTypeColumn.setCellValueFactory(new PropertyValueFactory<>("itemType"));
@@ -108,17 +108,17 @@ public class ItemScene {
         HBox returnButton = new HBox(returnToMainMenuButton);
         returnButton.setAlignment(Pos.BOTTOM_RIGHT);
 
-        HBox buttons = new HBox(addNewItemButton, removeItemButton,
+        HBox buttonsHBox = new HBox(addNewItemButton, removeItemButton,
                 updateTableViewButton,saveChangesButton);
-         buttons.setSpacing(20);
+         buttonsHBox.setSpacing(20);
 
-        VBox buttonsAndTableView = new VBox(itemTableView, buttons);
+        VBox buttonsAndTableViewVBox = new VBox(itemTableView, buttonsHBox);
 
         BorderPane rootLayout = new BorderPane();
         rootLayout.setStyle("-fx-background-color: #2C3E50;");
         rootLayout.setPadding(new Insets(30));
-        rootLayout.setTop(windowTitels);
-        rootLayout.setCenter(buttonsAndTableView);
+        rootLayout.setTop(windowTitelsVBox);
+        rootLayout.setCenter(buttonsAndTableViewVBox);
         rootLayout.setBottom(returnButton);
 
         Scene scene = new Scene(rootLayout);

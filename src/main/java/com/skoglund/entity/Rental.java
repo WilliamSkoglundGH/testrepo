@@ -43,11 +43,4 @@ public class Rental {
     public void setToFinished(){
         activeRental = false;
     }
-
-    //Getters för tableviewen
-    /*public String getItemType(){
-        return item.getItemType();
-    }
-
-     */
 }

@@ -2,7 +2,6 @@ package com.skoglund.gui.sceneWindows.itemSceneWindows;
 
 import com.skoglund.entity.item.FishingRod;
 import com.skoglund.gui.sceneWindows.sharedWindows.ConfirmationWindow;
-import com.skoglund.repository.Inventory;
 import com.skoglund.service.InventoryService;
 import com.skoglund.util.ValidationMethods;
 import com.skoglund.util.exceptions.InvalidInputException;
@@ -31,24 +30,24 @@ public class AddNewFishingRodWindow {
     }
 
     public void showAddNewFishingRodWindow(){
-        Stage addNewFishingPole = new Stage();
-        addNewFishingPole.initModality(Modality.APPLICATION_MODAL);
-        addNewFishingPole.setMinWidth(700);
-        addNewFishingPole.setMinHeight(500);
-        addNewFishingPole.setTitle("Lägg till utrustning");
+        Stage addNewFishingPoleStage = new Stage();
+        addNewFishingPoleStage.initModality(Modality.APPLICATION_MODAL);
+        addNewFishingPoleStage.setMinWidth(700);
+        addNewFishingPoleStage.setMinHeight(500);
+        addNewFishingPoleStage.setTitle("Lägg till utrustning");
 
-        Label titel = new Label("Lägg till ett nytt fiskespö till klubben");
-        titel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
+        Label titleLabel = new Label("Lägg till ett nytt fiskespö till klubben");
+        titleLabel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
                 "-fx-font-family:'Comic Sans MS'; -fx-font-weight: bold;");
-        HBox windowTitel = new HBox(titel);
-        windowTitel.setAlignment(Pos.CENTER);
+        HBox windowTitelHBox = new HBox(titleLabel);
+        windowTitelHBox.setAlignment(Pos.CENTER);
 
-        Label fishingPoleInfo = new Label("Fyll i all information om fiskespöt");
-        HBox windowSubTitel = new HBox(fishingPoleInfo);
+        Label fishingPoleInfoLabel = new Label("Fyll i all information om fiskespöt");
+        HBox windowSubTitel = new HBox(fishingPoleInfoLabel);
         windowSubTitel.setAlignment(Pos.CENTER);
 
-        VBox windowTitels = new VBox(titel,windowSubTitel);
-        windowTitels.setSpacing(7);
+        VBox windowTitelsVBox = new VBox(titleLabel,windowSubTitel);
+        windowTitelsVBox.setSpacing(7);
 
 
         TextField brandTextField = new TextField();
@@ -97,26 +96,26 @@ public class AddNewFishingRodWindow {
                 rodTypeTextField.clear();
             }
         });
-        VBox fishingPoleTextFields = new VBox(brandTextField, colorTextField, rodLengthTextField,
+        VBox fishingPoleTextFieldsVBox = new VBox(brandTextField, colorTextField, rodLengthTextField,
                 castingWeightTextField, rodTypeTextField);
 
-        Button closeWindow = new Button("Stäng fönster");
-        closeWindow.setOnAction(e -> addNewFishingPole.close());
+        Button closeWindowButton = new Button("Stäng fönster");
+        closeWindowButton.setOnAction(e -> addNewFishingPoleStage.close());
 
-        HBox buttons = new HBox(addItemButton, closeWindow);
-        buttons.setAlignment(Pos.CENTER);
-        buttons.setSpacing(100);
+        HBox buttonsHBox = new HBox(addItemButton, closeWindowButton);
+        buttonsHBox.setAlignment(Pos.CENTER);
+        buttonsHBox.setSpacing(100);
 
 
         BorderPane rootLayout = new BorderPane();
         rootLayout.setPadding(new Insets(15));
-        rootLayout.setTop(windowTitels);
-        rootLayout.setCenter(fishingPoleTextFields);
-        rootLayout.setBottom(buttons);
+        rootLayout.setTop(windowTitelsVBox);
+        rootLayout.setCenter(fishingPoleTextFieldsVBox);
+        rootLayout.setBottom(buttonsHBox);
 
         Scene scene = new Scene(rootLayout);
-        addNewFishingPole.setScene(scene);
-        addNewFishingPole.showAndWait();
+        addNewFishingPoleStage.setScene(scene);
+        addNewFishingPoleStage.showAndWait();
 
     }
 }

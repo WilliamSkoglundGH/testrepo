@@ -17,6 +17,10 @@ import javafx.stage.Stage;
 
 public class EditMemberWindow {
 
+    public EditMemberWindow(){
+
+    }
+
     public void editMember(Member member, TableView<Member> memberTableView,
                            MembershipService membershipService) {
         Stage editMemberStage = new Stage();
@@ -25,11 +29,11 @@ public class EditMemberWindow {
         editMemberStage.setMinHeight(500);
         editMemberStage.setTitle("Ändra medlemsinformation");
 
-        Label titel = new Label("Ändra medlemsuppgifter");
-        titel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
+        Label titleLabel = new Label("Ändra medlemsuppgifter");
+        titleLabel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
                 "-fx-font-family:'Comic Sans MS'; -fx-font-weight: bold;");
-        VBox windowTitel = new VBox(titel);
-        windowTitel.setAlignment(Pos.CENTER);
+        VBox windowTitelVBox = new VBox(titleLabel);
+        windowTitelVBox.setAlignment(Pos.CENTER);
 
         TextField newNameTextFiled = new TextField();
         newNameTextFiled.setPromptText("Nytt namn:");
@@ -39,12 +43,12 @@ public class EditMemberWindow {
         newAgeGroupChoiceBox.getItems().addAll("Barn", "Ungdom", "Vuxen", "Pensionär");
         newAgeGroupChoiceBox.setValue("Vuxen");
 
-        Label instruction = new Label("Ändra medlemsinfo:");
-        instruction.setStyle("-fx-font-size:17; -fx-font-weight:bold;");
+        Label instructionLabel = new Label("Ändra medlemsinfo:");
+        instructionLabel.setStyle("-fx-font-size:17; -fx-font-weight:bold;");
 
-        HBox changesTextFields = new HBox(instruction,newNameTextFiled,newAgeGroupChoiceBox);
-        changesTextFields.setPadding(new Insets(0,0,0,10));
-        changesTextFields.setSpacing(15);
+        HBox changesTextFieldsHBox = new HBox(instructionLabel,newNameTextFiled,newAgeGroupChoiceBox);
+        changesTextFieldsHBox.setPadding(new Insets(0,0,0,10));
+        changesTextFieldsHBox.setSpacing(15);
 
         Label nameLabel = new Label("Namn:");
         nameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 15;");
@@ -108,27 +112,27 @@ public class EditMemberWindow {
                 ";-fx-text-fill: white; -fx-font-weight: bold;");
         cancelButton.setOnAction(e -> editMemberStage.close());
 
-        HBox buttons = new HBox(saveButton,cancelButton);
-        buttons.setAlignment(Pos.CENTER);
-        buttons.setPadding(new Insets(0,0,15,0));
-        buttons.setSpacing(180);
+        HBox buttonsHBox = new HBox(saveButton,cancelButton);
+        buttonsHBox.setAlignment(Pos.CENTER);
+        buttonsHBox.setPadding(new Insets(0,0,15,0));
+        buttonsHBox.setSpacing(180);
 
-        VBox buttonsAndTextfields = new VBox(changesTextFields,buttons);
-        buttonsAndTextfields.setSpacing(50);
+        VBox buttonsAndTextfieldsVBox = new VBox(changesTextFieldsHBox, buttonsHBox);
+        buttonsAndTextfieldsVBox.setSpacing(50);
 
         Label gridPaneTitel = new Label("Nuvarande uppgifter:");
         gridPaneTitel.setStyle("-fx-font-size: 16; -fx-font-weight: bold;");
         gridPaneTitel.setPadding(new Insets(0,0,0,10));
 
-        VBox showCurrentMemberInfo = new VBox(gridPaneTitel, currentMemberInfoGridPane);
-        showCurrentMemberInfo.setSpacing(7);
-        showCurrentMemberInfo.setPadding(new Insets(10));
+        VBox showCurrentMemberInfoVBox = new VBox(gridPaneTitel, currentMemberInfoGridPane);
+        showCurrentMemberInfoVBox.setSpacing(7);
+        showCurrentMemberInfoVBox.setPadding(new Insets(10));
 
 
         BorderPane rootLayout = new BorderPane();
-        rootLayout.setTop(windowTitel);
-        rootLayout.setBottom(buttonsAndTextfields);
-        rootLayout.setCenter(showCurrentMemberInfo);
+        rootLayout.setTop(windowTitelVBox);
+        rootLayout.setBottom(buttonsAndTextfieldsVBox);
+        rootLayout.setCenter(showCurrentMemberInfoVBox);
 
         Scene scene = new Scene(rootLayout);
         editMemberStage.setScene(scene);

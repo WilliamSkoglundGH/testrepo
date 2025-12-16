@@ -53,7 +53,7 @@ public class Main extends Application {
         itemScene = new ItemScene(inventory, inventoryService, confirmationWindow, sceneHandler);
         memberRegistryScene = new MemberRegistryScene(memberRegistry, membershipService, confirmationWindow,
                 sceneHandler);
-        rentalScene = new RentalScene(rentalRegistry, rentalService, confirmationWindow, inventoryService,
+        rentalScene = new RentalScene(rentalService, confirmationWindow, inventoryService,
                 memberRegistry, sceneHandler, inventory);
         mainMenuScene = new MainMenuScene(sceneHandler);
 

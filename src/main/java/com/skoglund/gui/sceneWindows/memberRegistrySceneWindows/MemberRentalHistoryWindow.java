@@ -1,14 +1,12 @@
 package com.skoglund.gui.sceneWindows.memberRegistrySceneWindows;
 
 import com.skoglund.entity.Member;
-import com.skoglund.entity.Rental;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
@@ -19,17 +17,17 @@ import java.util.List;
 public class MemberRentalHistoryWindow {
 
     public void showRentalHistoryWindow(Member member){
-        Stage rentalHistory = new Stage();
-        rentalHistory.initModality(Modality.APPLICATION_MODAL);
-        rentalHistory.setMinWidth(700);
-        rentalHistory.setMinHeight(500);
-        rentalHistory.setTitle("Medlemshistorik");
+        Stage rentalHistoryStage = new Stage();
+        rentalHistoryStage.initModality(Modality.APPLICATION_MODAL);
+        rentalHistoryStage.setMinWidth(700);
+        rentalHistoryStage.setMinHeight(500);
+        rentalHistoryStage.setTitle("Medlemshistorik");
 
-        Label titel = new Label("Uthyrningshistorik för medlem:" + member.getName());
-        titel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
+        Label titleLabel = new Label("Uthyrningshistorik för medlem:" + member.getName());
+        titleLabel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
                 "-fx-font-family:'Comic Sans MS'; -fx-font-weight: bold;");
-        HBox windowTitel = new HBox(titel);
-        windowTitel.setAlignment(Pos.CENTER);
+        HBox windowTitelHBox = new HBox(titleLabel);
+        windowTitelHBox.setAlignment(Pos.CENTER);
 
         VBox rentalHistoryVBox = new VBox();
         rentalHistoryVBox.setSpacing(5);
@@ -46,22 +44,22 @@ public class MemberRentalHistoryWindow {
             }
         }
 
-        Button closeWindow = new Button("Stäng fönstret");
-        closeWindow.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;");
-        closeWindow.setOnAction(e -> rentalHistory.close());
+        Button closeWindowButton = new Button("Stäng fönstret");
+        closeWindowButton.setStyle("-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;");
+        closeWindowButton.setOnAction(e -> rentalHistoryStage.close());
 
-        HBox exitButton = new HBox(closeWindow);
-        exitButton.setAlignment(Pos.CENTER);
+        HBox exitButtonHBox = new HBox(closeWindowButton);
+        exitButtonHBox.setAlignment(Pos.CENTER);
 
         BorderPane rootLayout = new BorderPane();
         rootLayout.setPadding(new Insets(20));
-        rootLayout.setTop(windowTitel);
+        rootLayout.setTop(windowTitelHBox);
         rootLayout.setCenter(rentalHistoryVBox);
-        rootLayout.setBottom(exitButton);
+        rootLayout.setBottom(exitButtonHBox);
 
         Scene scene = new Scene(rootLayout);
-        rentalHistory.setScene(scene);
-        rentalHistory.showAndWait();
+        rentalHistoryStage.setScene(scene);
+        rentalHistoryStage.showAndWait();
 
     }
 }

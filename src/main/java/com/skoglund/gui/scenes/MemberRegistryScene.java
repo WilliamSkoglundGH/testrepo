@@ -70,10 +70,10 @@ public class MemberRegistryScene {
         //Layouts
         HBox titelHBox;
         HBox saveNewMemberHBox;
-        HBox tableViewTitel;
-        HBox searchTool;
-        HBox tableViewButtons;
-        HBox closeWindow;
+        HBox tableViewTitelHBox;
+        HBox searchToolHBox;
+        HBox tableViewButtonsHBox;
+        HBox closeWindowHBox;
         BorderPane rootLayout;
 
 
@@ -98,13 +98,12 @@ public class MemberRegistryScene {
         memberTableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         memberTableView.setItems(memberRegistry.getMemberList());
         memberTableView.getColumns().addAll(nameColumn, idColumn, ageGroupColumn);
-        //memberTableView ska läggas i VBOX ÖVERLAG
 
         tableViewTitelLabel = new Label("Medlemsregister");
         tableViewTitelLabel.setStyle("-fx-font-size:22; -fx-text-fill: white; -fx-padding: 7px; " +
                 "-fx-font-family:'Comic Sans MS';");
-        tableViewTitel = new HBox(tableViewTitelLabel);
-        tableViewTitel.setAlignment(Pos.TOP_LEFT);
+        tableViewTitelHBox = new HBox(tableViewTitelLabel);
+        tableViewTitelHBox.setAlignment(Pos.TOP_LEFT);
 
         searchMemberTextField = new TextField();
         searchMemberTextField.setPromptText("Ange medlems ID");
@@ -123,8 +122,7 @@ public class MemberRegistryScene {
             }
         });
 
-        searchTool = new HBox(searchMemberTextField, searchButton);
-        //Lägg detta i VBOX ÖVERLAG
+        searchToolHBox = new HBox(searchMemberTextField, searchButton);
 
         nameTextField = new TextField();
         nameTextField.setPrefWidth(170);
@@ -153,7 +151,6 @@ public class MemberRegistryScene {
         });
 
         saveNewMemberHBox = new HBox(nameTextField, ageGroupChoiceBox, saveMemberButton);
-        //LÄGG DETTA I KNAPP HBOXEN
 
         updateListButton = new Button("Uppdatera medlemslista");
         updateListButton.setOnAction(e -> {
@@ -193,9 +190,9 @@ public class MemberRegistryScene {
             }
         });
 
-        tableViewButtons = new HBox(saveNewMemberHBox, saveChangesButton, updateListButton,
+        tableViewButtonsHBox = new HBox(saveNewMemberHBox, saveChangesButton, updateListButton,
                 editMemberButton, showRentalHistoryButton);
-        tableViewButtons.setSpacing(70);
+        tableViewButtonsHBox.setSpacing(70);
 
         closeWindowButton = new Button("Återgå till huvudmenyn");
         closeWindowButton.setStyle("-fx-background-color: red;" +
@@ -203,11 +200,11 @@ public class MemberRegistryScene {
         closeWindowButton.setOnAction(e -> {
             sceneHandler.switchToMainMenu();
         });
-        closeWindow = new HBox(closeWindowButton);
-        closeWindow.setAlignment(Pos.BOTTOM_RIGHT);
-        closeWindow.setPadding(new Insets(10));
+        closeWindowHBox = new HBox(closeWindowButton);
+        closeWindowHBox.setAlignment(Pos.BOTTOM_RIGHT);
+        closeWindowHBox.setPadding(new Insets(10));
 
-        VBox memberRegistry = new VBox(tableViewTitel, searchTool,memberTableView, tableViewButtons);
+        VBox memberRegistry = new VBox(tableViewTitelHBox, searchToolHBox,memberTableView, tableViewButtonsHBox);
 
         //Root layouten (det yttersta skalet)
         rootLayout = new BorderPane();
@@ -215,7 +212,7 @@ public class MemberRegistryScene {
         rootLayout.setPadding(new Insets(30));
         rootLayout.setTop(titelHBox);
         rootLayout.setCenter(memberRegistry);
-        rootLayout.setBottom(closeWindow);
+        rootLayout.setBottom(closeWindowHBox);
 
         //Scene
         Scene scene = new Scene(rootLayout);

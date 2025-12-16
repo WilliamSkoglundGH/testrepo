@@ -6,17 +6,12 @@ import com.skoglund.gui.sceneWindows.rentalSceneWindows.CreateNewRentalWindow;
 import com.skoglund.gui.sceneWindows.sharedWindows.ConfirmationWindow;
 import com.skoglund.repository.Inventory;
 import com.skoglund.repository.MemberRegistry;
-import com.skoglund.repository.RentalRegistry;
 import com.skoglund.service.InventoryService;
 import com.skoglund.service.RentalService;
-import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -24,7 +19,6 @@ import javafx.scene.layout.VBox;
 
 
 public class RentalScene {
-    private RentalRegistry rentalRegistry;
     private RentalService rentalService;
     private ConfirmationWindow confirmationWindow;
     private InventoryService inventoryService;
@@ -44,11 +38,10 @@ public class RentalScene {
     public RentalScene(){
 
     }
-    public RentalScene(RentalRegistry rentalRegistry, RentalService rentalService,
+    public RentalScene(RentalService rentalService,
                        ConfirmationWindow confirmationWindow, InventoryService inventoryService,
                        MemberRegistry memberRegistry, SceneHandler sceneHandler,
                        Inventory inventory){
-        this.rentalRegistry = rentalRegistry;
         this.rentalService = rentalService;
         this.confirmationWindow = confirmationWindow;
         this.inventoryService = inventoryService;
@@ -59,15 +52,15 @@ public class RentalScene {
 
     public Scene showRentalScene(){
 
-        Label titel = new Label("Välkommen till sidan för att hantera klubbens uthyrningar");
-        titel.setStyle("-fx-font-size:25; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
+        Label titleLabel = new Label("Välkommen till sidan för att hantera klubbens uthyrningar");
+        titleLabel.setStyle("-fx-font-size:25; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
 
-        Label subTitel = new Label("Här under visas klubbens aktiva uthyrningar");
-        subTitel.setStyle("-fx-font-size:21; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
+        Label subTitleLabel = new Label("Här under visas klubbens aktiva uthyrningar");
+        subTitleLabel.setStyle("-fx-font-size:21; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
 
-        VBox windowTitels = new VBox(titel, subTitel);
-        windowTitels.setSpacing(7);
-        windowTitels.setAlignment(Pos.CENTER);
+        VBox windowTitelsVBox = new VBox(titleLabel, subTitleLabel);
+        windowTitelsVBox.setSpacing(7);
+        windowTitelsVBox.setAlignment(Pos.CENTER);
 
         //Table columns
         TableColumn<Rental, String> memberIdColumn = new TableColumn<>("MedlemsID:");
@@ -89,8 +82,8 @@ public class RentalScene {
         rentalTableView.getColumns().addAll(memberIdColumn, itemIdColumn, rentalTimePeriodColumn,
                 rentalPriceColumn);
 
-        Button newRental = new Button("Boka ny uthyrning");
-        newRental.setOnAction(e ->{
+        Button createNewRentalButton = new Button("Boka ny uthyrning");
+        createNewRentalButton.setOnAction(e ->{
             inventory.loadItemListFromFile();
             memberRegistry.loadMemberListFromFile();
             createNewRentalWindow = new CreateNewRentalWindow(inventoryService,memberRegistry,rentalService,
@@ -99,8 +92,8 @@ public class RentalScene {
             rentalTableView.setItems(rentalService.getActiveRentals());
         });
 
-        Button finishRental = new Button("Avsluta uthyrning");
-        finishRental.setOnAction(e -> {
+        Button finishRentalButton = new Button("Avsluta uthyrning");
+        finishRentalButton.setOnAction(e -> {
             Rental highlitedRental = rentalTableView.getSelectionModel().getSelectedItem();
             if(highlitedRental == null){
                 confirmationWindow.showConfirmationWindow("Ingen uthyrning markerad",
@@ -117,26 +110,35 @@ public class RentalScene {
             }
         });
 
-        HBox tableButtons = new HBox(newRental, finishRental);
-        tableButtons.setSpacing(30);
+        Button showRentalIncomeButton = new Button("Visa klubbens intäkter");
+        showRentalIncomeButton.setOnAction(e -> {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Intäkter");
+            alert.setHeaderText("Klubbens sammanlagda intäkter");
+            alert.setContentText(rentalService.calculateClubRentalIncome() + " kr");
+            alert.showAndWait();
+        });
 
-        VBox tableViewAndButtons = new VBox(rentalTableView, tableButtons);
-        tableViewAndButtons.setSpacing(10);
+        HBox tableButtonsHBox = new HBox(createNewRentalButton, finishRentalButton, showRentalIncomeButton);
+        tableButtonsHBox.setSpacing(30);
+
+        VBox tableViewAndButtonsVBox = new VBox(rentalTableView, tableButtonsHBox);
+        tableViewAndButtonsVBox.setSpacing(10);
 
         Button returnToMainMenuButton = new Button("Återgå till huvudmeny");
         returnToMainMenuButton.setOnAction(e ->{
             sceneHandler.switchToMainMenu();
         });
-        HBox returnButton = new HBox(returnToMainMenuButton);
-        returnButton.setAlignment(Pos.BOTTOM_RIGHT);
+        HBox returnButtonHBox = new HBox(returnToMainMenuButton);
+        returnButtonHBox.setAlignment(Pos.BOTTOM_RIGHT);
 
 
         BorderPane rootLayout = new BorderPane();
         rootLayout.setStyle("-fx-background-color: #2C3E50;");
         rootLayout.setPadding(new Insets(30));
-        rootLayout.setTop(windowTitels);
-        rootLayout.setCenter(tableViewAndButtons);
-        rootLayout.setBottom(returnButton);
+        rootLayout.setTop(windowTitelsVBox);
+        rootLayout.setCenter(tableViewAndButtonsVBox);
+        rootLayout.setBottom(returnButtonHBox);
 
 
         Scene rentalScene = new Scene(rootLayout);

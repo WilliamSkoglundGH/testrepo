@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 public class MainMenuScene {
     private SceneHandler sceneHandler;
@@ -22,11 +21,11 @@ public class MainMenuScene {
     }
 
     public Scene showMainMenu(){
-        Label titelLabel = new Label("Välkommen till medlemsklubben för sportfiskare!");
-        titelLabel.setStyle("-fx-font-size:33; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';" +
+        Label titleLabel = new Label("Välkommen till medlemsklubben för sportfiskare!");
+        titleLabel.setStyle("-fx-font-size:33; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';" +
                 "-fx-font-weight: bold;");
-        HBox windowTitel = new HBox(titelLabel);
-        windowTitel.setAlignment(Pos.CENTER);
+        HBox windowTitelHBox = new HBox(titleLabel);
+        windowTitelHBox.setAlignment(Pos.CENTER);
 
         Label subTitelLabel = new Label("Du har nu kommit till huvudmenyn");
         subTitelLabel.setStyle("-fx-font-size:31; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
@@ -34,13 +33,13 @@ public class MainMenuScene {
         Label menuDescriptionLabel = new Label("Här har du 3 val:");
         menuDescriptionLabel.setStyle("-fx-font-size:25; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
 
-        VBox menuDescription = new VBox(subTitelLabel, menuDescriptionLabel);
+        VBox menuDescriptionVBox = new VBox(subTitelLabel, menuDescriptionLabel);
 
-        VBox titelAndMenuDescription = new VBox(windowTitel, menuDescription);
-        titelAndMenuDescription.setSpacing(30);
+        VBox titelAndMenuDescriptionVBox = new VBox(windowTitelHBox, menuDescriptionVBox);
+        titelAndMenuDescriptionVBox.setSpacing(30);
 
-        menuDescription.setSpacing(5);
-        menuDescription.setAlignment(Pos.CENTER);
+        menuDescriptionVBox.setSpacing(5);
+        menuDescriptionVBox.setAlignment(Pos.CENTER);
 
         Label memberRegistryButtonLabel = new Label("För att hantera medlemskap och " +
                 "visa medlemsregistret");
@@ -81,7 +80,7 @@ public class MainMenuScene {
         //Root layouten (det yttersta skalet)
         BorderPane rootLayout = new BorderPane();
         rootLayout.setStyle("-fx-background-color: #2C3E50; -fx-padding: 20;");
-        rootLayout.setTop(titelAndMenuDescription);
+        rootLayout.setTop(titelAndMenuDescriptionVBox);
         rootLayout.setCenter(choiceRentalScene);
         rootLayout.setLeft(choiceMemberRegistryScene);
         rootLayout.setRight(choiceItemScene);

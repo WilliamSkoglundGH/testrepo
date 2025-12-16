@@ -137,21 +137,27 @@
   "price" : 1000.0,
   "activeRental" : false
 }, {
-  "memberId" : "8841451",
-  "itemId" : "5667513",
+  "memberId" : "0946194",
+  "itemId" : "8014343",
   "rentalTime" : 2,
   "price" : 1000.0,
   "activeRental" : false
 }, {
-  "memberId" : "6726198",
-  "itemId" : "1171285",
+  "memberId" : "8120419",
+  "itemId" : "8014343",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : true
+}, {
+  "memberId" : "8120419",
+  "itemId" : "0520878",
   "rentalTime" : 2,
   "price" : 1000.0,
   "activeRental" : false
 }, {
-  "memberId" : "8841451",
-  "itemId" : "5273190",
+  "memberId" : "0946194",
+  "itemId" : "0520878",
   "rentalTime" : 2,
   "price" : 1000.0,
-  "activeRental" : false
+  "activeRental" : true
 } ]

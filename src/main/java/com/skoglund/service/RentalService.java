@@ -45,18 +45,6 @@ public class RentalService {
 
     }
 
-    public void showActiveRentals(){
-
-    }
-
-    public double showClubIncome(){
-        return 0;
-    }
-
-    public void showAvailableItems(){
-
-    }
-
     private void saveRegisterChanges(){
         inventoryService.saveItemListToFile();
         rentalRegistry.saveRentalListToFile();
@@ -86,6 +74,14 @@ public class RentalService {
 
     public double calculateRentalPrice(int rentalTime, PricePolicy pricePolicy) {
         return rentalTime * pricePolicy.getPricePerDay();
+    }
+
+    public double calculateClubRentalIncome(){
+        double income = 0;
+        for(Rental rental : rentalRegistry.getAllRentals()){
+            income += rental.getPrice();
+        }
+        return income;
     }
 
     public ObservableList<Rental> getActiveRentals(){

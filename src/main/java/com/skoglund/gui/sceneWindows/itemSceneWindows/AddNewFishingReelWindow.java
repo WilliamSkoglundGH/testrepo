@@ -29,24 +29,24 @@ public class AddNewFishingReelWindow {
         this.confirmationWindow = confirmationWindow;
     }
     public void showAddNewFishingReelWindow(){
-        Stage addNewFishingReel = new Stage();
-        addNewFishingReel.initModality(Modality.APPLICATION_MODAL);
-        addNewFishingReel.setMinWidth(700);
-        addNewFishingReel.setMinHeight(500);
-        addNewFishingReel.setTitle("Lägg till utrustning");
+        Stage addNewFishingReelStage = new Stage();
+        addNewFishingReelStage.initModality(Modality.APPLICATION_MODAL);
+        addNewFishingReelStage.setMinWidth(700);
+        addNewFishingReelStage.setMinHeight(500);
+        addNewFishingReelStage.setTitle("Lägg till utrustning");
 
-        Label titel = new Label("Lägg till ett en ny fiskerulle till klubben");
-        titel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
+        Label titleLabel = new Label("Lägg till ett en ny fiskerulle till klubben");
+        titleLabel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
                 "-fx-font-family:'Comic Sans MS'; -fx-font-weight: bold;");
-        HBox windowTitel = new HBox(titel);
-        windowTitel.setAlignment(Pos.CENTER);
+        HBox windowTitelHBox = new HBox(titleLabel);
+        windowTitelHBox.setAlignment(Pos.CENTER);
 
-        Label fishingReelInfo = new Label("Fyll i all information om fiskerullen");
-        HBox windowSubTitel = new HBox(fishingReelInfo);
+        Label fishingReelInfoLabel = new Label("Fyll i all information om fiskerullen");
+        HBox windowSubTitel = new HBox(fishingReelInfoLabel);
         windowSubTitel.setAlignment(Pos.CENTER);
 
-        VBox windowTitels = new VBox(titel,windowSubTitel);
-        windowTitels.setSpacing(7);
+        VBox windowTitelsVBox = new VBox(titleLabel,windowSubTitel);
+        windowTitelsVBox.setSpacing(7);
 
         TextField brandTextField = new TextField();
         brandTextField.setPromptText("Ange märke:");
@@ -92,25 +92,25 @@ public class AddNewFishingReelWindow {
                 maxDragTextField.clear();
             }
         });
-        VBox fishingPoleTextFields = new VBox(brandTextField, colorTextField, gearRatioTextField,
+        VBox fishingPoleTextFieldsVBox = new VBox(brandTextField, colorTextField, gearRatioTextField,
                 reelTypeTextField, maxDragTextField);
 
-        Button closeWindow = new Button("Stäng fönster");
-        closeWindow.setOnAction(e -> addNewFishingReel.close());
+        Button closeWindowButton = new Button("Stäng fönster");
+        closeWindowButton.setOnAction(e -> addNewFishingReelStage.close());
 
-        HBox buttons = new HBox(addItemButton, closeWindow);
-        buttons.setAlignment(Pos.CENTER);
-        buttons.setSpacing(100);
+        HBox buttonsHBox = new HBox(addItemButton, closeWindowButton);
+        buttonsHBox.setAlignment(Pos.CENTER);
+        buttonsHBox.setSpacing(100);
 
 
         BorderPane rootLayout = new BorderPane();
         rootLayout.setPadding(new Insets(15));
-        rootLayout.setTop(windowTitels);
-        rootLayout.setCenter(fishingPoleTextFields);
-        rootLayout.setBottom(buttons);
+        rootLayout.setTop(windowTitelsVBox);
+        rootLayout.setCenter(fishingPoleTextFieldsVBox);
+        rootLayout.setBottom(buttonsHBox);
 
         Scene scene = new Scene(rootLayout);
-        addNewFishingReel.setScene(scene);
-        addNewFishingReel.showAndWait();
+        addNewFishingReelStage.setScene(scene);
+        addNewFishingReelStage.showAndWait();
     }
 }

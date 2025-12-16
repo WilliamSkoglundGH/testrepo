@@ -13,36 +13,36 @@ import javafx.stage.Stage;
 public class ConfirmationWindow {
 
     public void showConfirmationWindow(String stageTitel, String titelLabel, String labelText) {
-        Stage noMatchFoundWindow = new Stage();
-        noMatchFoundWindow.initModality(Modality.APPLICATION_MODAL);
-        noMatchFoundWindow.setMinWidth(600);
-        noMatchFoundWindow.setMinHeight(400);
-        noMatchFoundWindow.setTitle(stageTitel);
+        Stage confirmationWindowStage = new Stage();
+        confirmationWindowStage.initModality(Modality.APPLICATION_MODAL);
+        confirmationWindowStage.setMinWidth(600);
+        confirmationWindowStage.setMinHeight(400);
+        confirmationWindowStage.setTitle(stageTitel);
 
-        Label titel = new Label(titelLabel);
-        titel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
+        Label titleLabel = new Label(titelLabel);
+        titleLabel.setStyle("-fx-font-size:22; -fx-padding: 7px;" +
                 "-fx-font-family:'Comic Sans MS'; -fx-font-weight: bold;");
-        VBox windowTitel = new VBox(titel);
-        windowTitel.setAlignment(Pos.CENTER);
+        VBox windowTitelVBox = new VBox(titleLabel);
+        windowTitelVBox.setAlignment(Pos.CENTER);
 
-        Label info = new Label(labelText);
-        info.setStyle("-fx-font-size:19; -fx-font-weight: bold;");
+        Label infoLabel = new Label(labelText);
+        infoLabel.setStyle("-fx-font-size:19; -fx-font-weight: bold;");
 
-        Button exitWindow = new Button("Stäng fönster");
-        exitWindow.setStyle("-fx-background-color: red;" +
+        Button exitWindowButton = new Button("Stäng fönster");
+        exitWindowButton.setStyle("-fx-background-color: red;" +
                 ";-fx-text-fill: white; -fx-font-weight: bold;");
-        exitWindow.setOnAction(e -> noMatchFoundWindow.close());
-        VBox exitButton = new VBox(exitWindow);
-        exitButton.setAlignment(Pos.CENTER);
-        exitButton.setPadding(new Insets(0, 0, 20, 0));
+        exitWindowButton.setOnAction(e -> confirmationWindowStage.close());
+        VBox exitButtonVBox = new VBox(exitWindowButton);
+        exitButtonVBox.setAlignment(Pos.CENTER);
+        exitButtonVBox.setPadding(new Insets(0, 0, 20, 0));
 
         BorderPane rootLayout = new BorderPane();
-        rootLayout.setTop(windowTitel);
-        rootLayout.setBottom(exitButton);
-        rootLayout.setCenter(info);
+        rootLayout.setTop(windowTitelVBox);
+        rootLayout.setBottom(exitButtonVBox);
+        rootLayout.setCenter(infoLabel);
 
         Scene scene = new Scene(rootLayout);
-        noMatchFoundWindow.setScene(scene);
-        noMatchFoundWindow.showAndWait();
+        confirmationWindowStage.setScene(scene);
+        confirmationWindowStage.showAndWait();
     }
 }
