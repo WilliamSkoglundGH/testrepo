@@ -26,14 +26,11 @@ public class RentalScene {
     //Denna klass använder ej detta, men fönstret denna klass öppnar gör det
     private MemberRegistry memberRegistry;
 
-    //GUI fönster specifika för denna scen
-    private CreateNewRentalWindow createNewRentalWindow;
-
     //Tabell specifik för denna scen
     private TableView<Rental> rentalTableView;
 
     //Scen hanterare som byter scener
-    SceneHandler sceneHandler;
+    private SceneHandler sceneHandler;
 
     public RentalScene(){
 
@@ -51,6 +48,9 @@ public class RentalScene {
     }
 
     public Scene showRentalScene(){
+
+        CreateNewRentalWindow createNewRentalWindow = new CreateNewRentalWindow(inventoryService,memberRegistry,
+                rentalService,confirmationWindow);
 
         Label titleLabel = new Label("Välkommen till sidan för att hantera klubbens uthyrningar");
         titleLabel.setStyle("-fx-font-size:25; -fx-text-fill: white; -fx-font-family: 'Comic Sans MS';");
@@ -86,8 +86,6 @@ public class RentalScene {
         createNewRentalButton.setOnAction(e ->{
             inventory.loadItemListFromFile();
             memberRegistry.loadMemberListFromFile();
-            createNewRentalWindow = new CreateNewRentalWindow(inventoryService,memberRegistry,rentalService,
-                    confirmationWindow);
             createNewRentalWindow.showNewRentalWindow();
             rentalTableView.setItems(rentalService.getActiveRentals());
         });

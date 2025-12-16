@@ -35,6 +35,12 @@ public class InventoryService {
         return inventory.getAvailableItems();
     }
 
+    public void changeItemInfo(Item item, String brand, String color, boolean availability){
+        item.setBrand(brand);
+        item.setColor(color);
+        item.setAvailable(availability);
+    }
+
 
 
 }

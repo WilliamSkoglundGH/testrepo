@@ -71,6 +71,7 @@ public class AddNewLureSetWindow {
                 confirmationWindow.showConfirmationWindow("Nytt betesset adderat",
                         "Betessettet har lagts till i klubben!",
                         "Det nya betessettet är nu adderad till klubbens lager");
+                addNewLureSetStage.close();
 
 
             }catch(InvalidInputException exception){

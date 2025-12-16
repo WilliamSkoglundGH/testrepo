@@ -79,6 +79,7 @@ public class AddNewFishingReelWindow {
                 confirmationWindow.showConfirmationWindow("Ny fiskerulle adderad",
                         "Fiskerullen har lagts till i klubben!",
                         "Den nya fiskerullen är nu adderad till klubbens lager");
+                addNewFishingReelStage.close();
 
 
             }catch(InvalidInputException exception){
