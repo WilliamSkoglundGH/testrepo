@@ -1,18 +1,23 @@
 package com.skoglund.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Member {
     private String name;
     private String ageGroup;
     private String id;
-    private List<Rental> activeRentals;
-    private List<String> rentalHistory;
+    // Dessa listor startar tomma när en medlem skapas första gången.
+    // De fylls på och förändras under applikationens gång (add/remove).
+    // Vid återstart laddas de med sparad data från JSON
+    private final List<String> rentalHistory = new ArrayList<>();
 
     public Member(){
 
+    }
+    public Member(String name, String ageGroup){
+        this.name = name;
+        this.ageGroup = ageGroup;
+        this.id = createRandomId();
     }
 
     public String getName() {
@@ -35,16 +40,16 @@ public class Member {
         this.ageGroup = ageGroup;
     }
 
+    public List<String> getRentalHistory() {
+        return rentalHistory;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
 
-    public Member(String name, String ageGroup){
-        this.name = name;
-        this.ageGroup = ageGroup;
-        this.id = createRandomId();
-        activeRentals = new ArrayList<>();
-        rentalHistory = new ArrayList<>();
+    public void addNewRentalToHistory(String rentalInfo){
+        rentalHistory.add(rentalInfo);
     }
 
     private String createRandomId(){

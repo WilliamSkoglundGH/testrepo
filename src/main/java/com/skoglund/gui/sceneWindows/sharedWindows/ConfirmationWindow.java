@@ -1,4 +1,4 @@
-package com.skoglund.guiMethods.memberRegistryGUIMethods;
+package com.skoglund.gui.sceneWindows.sharedWindows;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -10,9 +10,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class MemberRegisterAlert {
+public class ConfirmationWindow {
 
-    public void showMemberRegisterAlert(String stageTitel, String titelLabel, String labelText) {
+    public void showConfirmationWindow(String stageTitel, String titelLabel, String labelText) {
         Stage noMatchFoundWindow = new Stage();
         noMatchFoundWindow.initModality(Modality.APPLICATION_MODAL);
         noMatchFoundWindow.setMinWidth(600);

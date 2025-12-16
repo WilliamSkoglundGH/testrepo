@@ -3,9 +3,6 @@ package com.skoglund.service;
 import com.skoglund.entity.Member;
 import com.skoglund.repository.MemberRegistry;
 
-import java.io.IOException;
-import java.util.Optional;
-
 public class MembershipService {
     private MemberRegistry memberRegistry;
 
@@ -22,10 +19,10 @@ public class MembershipService {
     }
 
     public void deleteMemberFromFile(){
-
+        //Lägg till denna funktionalitet i applikationen
     }
 
-    public void saveChangesToFile() throws IOException {
+    public void saveMemberListToFile() {
         memberRegistry.saveMemberListToFile();
     }
 
@@ -33,7 +30,9 @@ public class MembershipService {
         return memberRegistry.searchAndReturnMember(id);
     }
 
-    public void changeMemberInfo(){
+    public void changeMemberInfo(Member member, String newName, String newAgeGroup){
+        member.setName(newName);
+        member.setAgeGroup(newAgeGroup);
 
     }
 }
