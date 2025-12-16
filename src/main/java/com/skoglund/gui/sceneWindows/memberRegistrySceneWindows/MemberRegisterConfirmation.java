@@ -1,4 +1,4 @@
-package com.skoglund.guiMethods.memberRegistryGUIMethods;
+package com.skoglund.gui.sceneWindows.memberRegistrySceneWindows;
 
 import com.skoglund.entity.Member;
 import javafx.geometry.Insets;

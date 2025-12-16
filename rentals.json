@@ -1,0 +1,157 @@
+[ {
+  "memberId" : "0946194",
+  "itemId" : "6781635",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "6781635",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "6781635",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "6781635",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8120419",
+  "itemId" : "6781635",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "6781635",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "6781635",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "6781635",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "6781635",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "6781635",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8120419",
+  "itemId" : "6687119",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "3793802",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "7006873",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8120419",
+  "itemId" : "5980086",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "1415281",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "1415281",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "1415281",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "1415281",
+  "rentalTime" : 1,
+  "price" : 500.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "1415281",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "1415281",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "5787781",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "0946194",
+  "itemId" : "1415281",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "6726198",
+  "itemId" : "5273190",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "5667513",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "6726198",
+  "itemId" : "1171285",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+}, {
+  "memberId" : "8841451",
+  "itemId" : "5273190",
+  "rentalTime" : 2,
+  "price" : 1000.0,
+  "activeRental" : false
+} ]

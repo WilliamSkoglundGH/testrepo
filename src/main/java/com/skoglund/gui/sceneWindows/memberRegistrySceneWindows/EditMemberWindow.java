@@ -1,6 +1,9 @@
-package com.skoglund.guiMethods.memberRegistryGUIMethods;
+package com.skoglund.gui.sceneWindows.memberRegistrySceneWindows;
 
 import com.skoglund.entity.Member;
+import com.skoglund.service.MembershipService;
+import com.skoglund.util.ValidationMethods;
+import com.skoglund.util.exceptions.InvalidInputException;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,7 +17,8 @@ import javafx.stage.Stage;
 
 public class EditMemberWindow {
 
-    public void editMember(Member member, TableView<Member> memberTableView) {
+    public void editMember(Member member, TableView<Member> memberTableView,
+                           MembershipService membershipService) {
         Stage editMemberStage = new Stage();
         editMemberStage.initModality(Modality.APPLICATION_MODAL);
         editMemberStage.setMinWidth(700);
@@ -76,20 +80,27 @@ public class EditMemberWindow {
         saveButton.setStyle("-fx-background-color: green;" +
                 ";-fx-text-fill: white; -fx-font-weight: bold;");
         saveButton.setOnAction(e -> {
-            String newName = newNameTextFiled.getText();
-            String newAgeGroup = newAgeGroupChoiceBox.getValue();
+            try{
+                String newName = newNameTextFiled.getText();
+                ValidationMethods.validateMemberName(newName);
+                String newAgeGroup = newAgeGroupChoiceBox.getValue();
+                membershipService.changeMemberInfo(member, newName, newAgeGroup);
+                memberTableView.refresh();
 
-            member.setName(newName);
-            member.setAgeGroup(newAgeGroup);
-            memberTableView.refresh();
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Klart!");
+                alert.setHeaderText(null);
+                alert.setContentText("Ändringar av medlem sparades!");
+                alert.showAndWait();
 
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Klart!");
-            alert.setHeaderText(null);
-            alert.setContentText("Ändringar av medlem sparades!");
-            alert.showAndWait();
-
-            editMemberStage.close();
+                editMemberStage.close();
+            }catch(InvalidInputException exception){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Fel");
+                alert.setHeaderText("Ändring av medlem misslyckades!");
+                alert.setContentText(exception.getMessage());
+                alert.showAndWait();
+            }
         });
 
         Button cancelButton = new Button("Avbryt");

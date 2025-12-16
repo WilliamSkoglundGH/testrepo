@@ -1,57 +1,31 @@
 [ {
   "name" : "William",
   "ageGroup" : "Vuxen",
-  "id" : "6871281"
-}, {
-  "name" : "Ingrid",
-  "ageGroup" : "Ungdom",
-  "id" : "7590409"
-}, {
-  "name" : "Anna",
-  "ageGroup" : "Barn",
-  "id" : "1094594"
-}, {
-  "name" : "12",
-  "ageGroup" : "Barn",
-  "id" : "2703554"
+  "id" : "0946194",
+  "rentalHistory" : [ "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 1 dagar | 500.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskerulle | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskerulle| 2 dagar | 1000.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n" ]
 }, {
   "name" : "David",
   "ageGroup" : "Vuxen",
-  "id" : "2192091"
+  "id" : "8841451",
+  "rentalHistory" : [ "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskerulle| 2 dagar | 1000.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 2 dagar | 1000.0kr\n", "Bokad uthyrning:\n Utrustning: Betesset | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Betesset| 2 dagar | 1000.0kr\n" ]
 }, {
-  "name" : "Hej",
+  "name" : "awdaw",
   "ageGroup" : "Vuxen",
-  "id" : "3091130"
+  "id" : "8120419",
+  "rentalHistory" : [ "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Bokad uthyrning:\n Utrustning: Fiskespö | 1 dagar | 500.0 kr\n", "Avslutad bokning:\n Utrustning: Fiskespö| 1 dagar | 500.0kr\n", "Bokad uthyrning:\n Utrustning: Betesset | 1 dagar | 500.0 kr\n" ]
 }, {
-  "name" : "Yes",
+  "name" : "dadaa",
   "ageGroup" : "Vuxen",
-  "id" : "5799761"
-}, {
-  "name" : "",
-  "ageGroup" : "Vuxen",
-  "id" : "4199227"
-}, {
-  "name" : "Jan",
-  "ageGroup" : "Vuxen",
-  "id" : "5288001"
+  "id" : "6726198",
+  "rentalHistory" : [ "Bokad uthyrning:\n Utrustning: Betesset | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Betesset| 2 dagar | 1000.0kr\n", "Bokad uthyrning:\n Utrustning: Betesset | 2 dagar | 1000.0 kr\n", "Avslutad bokning:\n Utrustning: Betesset| 2 dagar | 1000.0kr\n" ]
 }, {
   "name" : "kalle",
   "ageGroup" : "Vuxen",
-  "id" : "4384812"
+  "id" : "8271148",
+  "rentalHistory" : [ ]
 }, {
-  "name" : "Johan",
-  "ageGroup" : "Vuxen",
-  "id" : "0906765"
-}, {
-  "name" : "Hasse",
-  "ageGroup" : "Vuxen",
-  "id" : "2747384"
-}, {
-  "name" : "William",
-  "ageGroup" : "Vuxen",
-  "id" : "9055796"
-}, {
-  "name" : "Kalle",
-  "ageGroup" : "Vuxen",
-  "id" : "1617360"
+  "name" : "bhej",
+  "ageGroup" : "Ungdom",
+  "id" : "7923270",
+  "rentalHistory" : [ ]
 } ]
