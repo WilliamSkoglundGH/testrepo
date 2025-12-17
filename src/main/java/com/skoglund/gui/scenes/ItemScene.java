@@ -144,6 +144,8 @@ public class ItemScene {
         });
 
         Button returnToMainMenuButton = new Button("Återgå till huvudmeny");
+        returnToMainMenuButton.setStyle("-fx-background-color: red;" +
+                ";-fx-text-fill: white; -fx-font-weight: bold;");
         returnToMainMenuButton.setOnAction(e -> {
             sceneHandler.switchToMainMenu();
         });

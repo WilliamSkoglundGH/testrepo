@@ -85,7 +85,7 @@ public class Main extends Application {
         sceneHandler.setStage(stage);
 
         stage.setScene(mainMenuScene.showMainMenu());
-        stage.setFullScreen(true);
+        stage.setMaximized(true);
         stage.show();
 
 
