@@ -18,10 +18,6 @@ public class MembershipService {
         memberRegistry.addMember(member);
     }
 
-    public void deleteMemberFromFile(){
-        //Lägg till denna funktionalitet i applikationen
-    }
-
     public void saveMemberListToFile() {
         memberRegistry.saveMemberListToFile();
     }

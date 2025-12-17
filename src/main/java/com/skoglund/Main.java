@@ -14,7 +14,10 @@ import com.skoglund.service.MembershipService;
 import com.skoglund.service.RentalService;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Main extends Application {
     public static void main(String[] args){
@@ -48,6 +51,22 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        try{
+            InventoryService inventoryService = new InventoryService(inventory);
+            MembershipService membershipService = new MembershipService(memberRegistry);
+            RentalService rentalService = new RentalService(rentalRegistry, inventoryService, membershipService);
+        }catch(IOException e){
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Fel i applikationen");
+            errorAlert.setContentText("Applikationens data är korrupt, kontakta administration\n" +
+                    "Applikationen stängs ner!");
+        }
+
+
+
+
+
+
         sceneHandler = new SceneHandler();
 
         itemScene = new ItemScene(inventory, inventoryService, confirmationWindow, sceneHandler);
